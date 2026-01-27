@@ -11,6 +11,8 @@ import IconRevenue from "../assets/revenue.png";
 import IconPlay from "../assets/play.png";
 import IconHeart from "../assets/heart.png";
 import IconHeartBroken from "../assets/heart-broken.png";
+import { useNavigate } from "react-router-dom";
+
 const MovieDetail = () => {
   const { id } = useParams();
   const { hanldeTrailer } = useContext(MovieContext);
@@ -19,6 +21,7 @@ const MovieDetail = () => {
   const [similar, setSimilar] = useState([]);
   const { addFavorite, removeFavorite, isFavorite } =
     useContext(FavoriteContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -206,7 +209,7 @@ const MovieDetail = () => {
             <div
               key={item.id}
               className="cursor-pointer group"
-              onClick={() => (window.location.href = `/movie/${item.id}`)}
+              onClick={() => navigate(`/movie/${item.id}`)}
             >
               <img
                 src={`${import.meta.env.VITE_IMAGE_URL}${item.poster_path}`}
