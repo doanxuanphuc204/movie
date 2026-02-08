@@ -22,7 +22,10 @@ const Footer = () => {
       {/* BOTTOM */}
       <div className="flex flex-col md:flex-row justify-between items-center px-10 py-1 text-xs">
         <p>© {new Date().getFullYear()} MOVIE. All rights reserved.</p>
-        <p className="text-gray-500">Made with for movie lovers</p>
+        <p className="text-gray-500">
+          Made with by{" "}
+          <span className="text-gray-300 font-medium">Phúc Đoàn</span>
+        </p>
       </div>
     </footer>
   );
