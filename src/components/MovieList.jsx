@@ -25,16 +25,15 @@ const responsive = {
 
 const MovieList = ({ title, data }) => {
   const navigate = useNavigate();
-  // const { hanldeTrailer } = useContext(MovieContext);
 
   return (
     <div className="text-white p-10 mb-10">
       <h2 className="uppercase text-xl mb-4">{title}</h2>
-      <Carousel responsive={responsive}>
+      <Carousel responsive={responsive} itemClass="px-2">
         {data?.map((item) => (
           <div
             key={item.id}
-            className="w-[200px] h-[300px] relative group cursor-pointer"
+            className="h-[300px] relative group cursor-pointer"
             onClick={() => navigate(`/movie/${item.id}`)}
           >
             <div className="group-hover:scale-105 transition-transform duration-500 w-full h-full">
@@ -42,10 +41,10 @@ const MovieList = ({ title, data }) => {
               <img
                 src={`${import.meta.env.VITE_IMAGE_URL}${item.poster_path}`}
                 alt={item.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded"
               />
               <div className="absolute bottom-4 left-2">
-                <p className="uppercase text-md">
+                <p className="uppercase text-sm">
                   {item.title || item.original_title}
                 </p>
               </div>

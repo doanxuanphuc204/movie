@@ -12,6 +12,7 @@ import IconPlay from "../assets/play.png";
 import IconHeart from "../assets/heart.png";
 import IconHeartBroken from "../assets/heart-broken.png";
 import { useNavigate } from "react-router-dom";
+import { HistoryContext } from "../context/HistoryContext";
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -21,6 +22,8 @@ const MovieDetail = () => {
   const [similar, setSimilar] = useState([]);
   const { addFavorite, removeFavorite, isFavorite } =
     useContext(FavoriteContext);
+  const { addToHistory } = useContext(HistoryContext);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,6 +56,11 @@ const MovieDetail = () => {
 
     fetchAll();
   }, [id]);
+  useEffect(() => {
+    if (movie) {
+      addToHistory(movie);
+    }
+  }, [movie]);
 
   if (!movie) return <div className="text-white p-10">Loading...</div>;
 
